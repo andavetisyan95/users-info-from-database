@@ -1,0 +1,11 @@
+@mixin flex($justify_dir:center, $align_dir:center, $flex_dir:column) {
+    display: flex;
+    justify-content: $justify_dir;
+    align-items: $align_dir;
+    flex-direction: $flex_dir;
+}
+
+@mixin buttonSize($btn_width:100px, $btn_heigth:40px){
+    width: $btn_width;
+    height: $btn_heigth;
+}
