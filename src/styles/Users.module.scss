@@ -1,0 +1,27 @@
+.users_div{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    row-gap: 20px;
+    margin: 80px auto;
+    width: 80vw;
+    &_card{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        max-width: 200px;
+        max-height: 300px;
+        border-radius: 40px;
+        background-color: lightsalmon;
+        &_img{
+            max-height: 200px;
+            max-width: 200px;
+            border-radius: 40px;
+            margin: 2px auto;
+        }
+        &_pTag{
+            font-size: 18px;
+            font-family: "Montserrat", sans-serif;
+        }
+    }
+}

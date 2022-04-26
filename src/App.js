@@ -1,11 +1,16 @@
+import { Route, Routes } from 'react-router';
+//components
+import Users from "./components/Users"
 import './App.css';
-import UsersNames from './UsersNames';
+
 
 
 function App() {
   return (
     <div className='App'>
-      {UsersNames()}
+      <Routes>
+      <Route path='/' element={<Users />} />
+      </Routes>
     </div>
   );
 }
