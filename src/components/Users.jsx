@@ -20,13 +20,13 @@ export default function Users() {
            setUsers(data);
         })
         
-    },[])
+    })
 
   return (
     <div className={styles.users_div}>
         {
             users.map((user)=>{
-                return  <Link to={"/"} className={styles.users_div_card} key={user.id}>
+                return  <Link to={"/aboutUsers"} className={styles.users_div_card} key={user.id}>
                             <img className={styles.users_div_card_img} src={unknownImg } ></img>
                             <p className={styles.users_div_card_pTag}>{user.username}</p>
                         </Link>
