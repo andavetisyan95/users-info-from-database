@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router';
 import Users from "./components/Users";
 import AboutUsers from "./components/AboutUsers"
 import Albums from './components/Albums';
+import NoFound from './components/NoFound';
 //styles
 import './App.css';
 
@@ -15,6 +16,7 @@ function App() {
         <Route path='/' element={<Users />} />
         <Route path='/aboutUsers/:userId' element={<AboutUsers />} />
         <Route path='/albums/:userId' element={<Albums />} />
+        <Route path='*' element={<NoFound />} />
       </Routes>
     </div>
   );

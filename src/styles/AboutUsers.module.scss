@@ -12,8 +12,8 @@ body{
         width:400px;
         height: 600px;
         border-radius: 20px;
-        background-color: whitesmoke;
         position: relative;
+        background-color: rgb(219, 216, 213);
         &_btns{
             @include flex(center, center, row);
             position: absolute;
@@ -43,6 +43,16 @@ body{
         }
         &_about_users{
             @include flex();
+            &>p{
+                color: rgb(26, 112, 188);
+                font-weight: 700;
+                font-size: 17px;
+                &>span{
+                    color: rgb(99, 188, 72);
+                    font-size: 16px;
+                    font-weight: 400;
+                }
+            }
             &_img{
                 border-radius: 100%;
                 width: 100px;
@@ -58,4 +68,10 @@ body{
         }
       
     }
+}
+
+.error_img{
+    object-fit:cover;
+    width: 100vw;
+    height: 100vh;
 }
