@@ -15,7 +15,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Users />} />
         <Route path='/aboutUsers/:userId' element={<AboutUsers />} />
-        <Route path='/albums/:userId' element={<Albums />} />
+        <Route path='/albums/:usId' element={<Albums />} />
         <Route path='*' element={<NoFound />} />
       </Routes>
     </div>

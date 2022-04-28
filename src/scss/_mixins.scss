@@ -9,3 +9,25 @@
     width: $btn_width;
     height: $btn_heigth;
 }
+
+@mixin header($size:36px, $color:white,$align: center,$weight:bold){
+    font-size: $size;
+    color: $color;
+    text-align: $align;
+    font-weight: $weight;
+}
+
+@mixin mainStyle($posit:absolute, $main_wdth:100%, $main_hgth:auto){
+    position: $posit;
+    width: $main_wdth;
+    height: $main_hgth;
+}
+
+
+@mixin grid($grid_temp:repeat(6, 2fr), $gap:20px, $col_gap: 10px){
+    display: grid;
+    grid-template-columns: $grid_temp;
+    row-gap: $gap;
+    column-gap: $col_gap;
+}
+

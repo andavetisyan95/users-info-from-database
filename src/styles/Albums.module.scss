@@ -1,0 +1,42 @@
+@import "../scss/exports";
+
+main{
+    @include  mainStyle();
+    background-color: rgb(224, 213, 47);
+}
+
+.header{
+    @include header();
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+.albums_cont{
+    @include grid();
+    margin: 20px auto;
+    &_card{
+        @include flex();
+        position: relative;
+        background-color:#ff8f26;
+        width: 220px;
+        height: 280px;
+        border-radius: 10px;
+        &_img{
+            width: 220px;
+            height: 140px;
+            position: absolute;
+            top: 0;
+            border-radius: 10px 10px 0 0;
+            cursor: pointer;
+        }
+        &_title{
+            position: absolute;
+            top: 50%;
+            color: rgb(231, 235, 28);
+            font-weight: 700;
+            font-size: 18px;
+            text-align: center;
+            line-height: 25px;
+        }
+    }
+}

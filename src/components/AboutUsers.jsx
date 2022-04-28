@@ -18,11 +18,10 @@ export default function AboutUsers() {
     fetch(URL)
       .then(response => response.json())
       .then(results => {
-        const current_user = results.find(({ id }) => id === +userId)
+        const current_user = results.find(({ id}) => id === +userId)
         setCurrentUser(current_user)
       })
   }, [])
-
 
   return (
     <div className={styles.user}>
