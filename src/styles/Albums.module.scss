@@ -13,7 +13,7 @@ main{
 
 .albums_cont{
     @include grid();
-    margin: 20px auto;
+    margin: 20px 20px;
     &_card{
         @include flex();
         position: relative;

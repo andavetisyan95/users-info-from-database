@@ -1,6 +1,6 @@
 //react hooks and helpers
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router';
+import {  useNavigate, useParams } from 'react-router';
 import { Link } from 'react-router-dom';
 
 //styles
@@ -15,6 +15,7 @@ export default function Albums() {
     const { usId } = useParams()
 
     const [currentAlbums, setCurrentAlbums] = useState([]);
+    const navigate = useNavigate()
 
     useEffect(() => {
         fetch(URL)
@@ -25,12 +26,13 @@ export default function Albums() {
           })
       }, [])
 
+      function goback(){
+          navigate(-1)
+      }
       
     return (
         <main>
-            <Link to={`/aboutUsers/${usId}`}>
-            <img  src="https://img.icons8.com/ios-filled/50/000000/left.png"/>
-            </Link>
+            <img style={{cursor:"pointer"}} onClick={goback}  src="https://img.icons8.com/ios-filled/50/000000/left.png"/>
             <div className={styles.header}>Albums</div>
             <div className={styles.albums_cont}>
                 {

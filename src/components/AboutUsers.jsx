@@ -38,7 +38,9 @@ export default function AboutUsers() {
             <Link to={`/albums/${userId}`}>
               <button className={styles.user_container_btns_1}>Albums</button>
             </Link>
-            <button className={styles.user_container_btns_2}>Posts</button>
+            <Link to={`/posts/${userId}`}>
+              <button className={styles.user_container_btns_2}>Posts</button>
+            </Link>
           </div>
         </div>
       </div>
