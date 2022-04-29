@@ -17,14 +17,14 @@
     font-weight: $weight;
 }
 
-@mixin mainStyle($posit:absolute, $main_wdth:100%, $main_hgth:auto){
+@mixin mainStyle($posit:absolute, $main_wdth:100vw, $main_hgth:auto){
     position: $posit;
     width: $main_wdth;
     height: $main_hgth;
 }
 
 
-@mixin grid($grid_temp:repeat(6, 2fr), $gap:20px, $col_gap: 10px){
+@mixin grid($grid_temp:repeat(5, 2fr), $gap:20px, $col_gap: 10px){
     display: grid;
     grid-template-columns: $grid_temp;
     row-gap: $gap;
