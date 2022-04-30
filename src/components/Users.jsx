@@ -18,8 +18,9 @@ export default function Users() {
             .then((response) => {
                 return response.json();
             })
-            .then((data) => {
-                setUsers(data);
+            .then((users) => {
+                setUsers(users);
+                localStorage.setItem("users",JSON.stringify(users))
             })
 
     }, [])

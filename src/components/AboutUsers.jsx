@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation, useParams } from 'react-router';
+import {  useParams } from 'react-router';
 import { Link } from 'react-router-dom';
 //images
 import mount from "../images/mount.jpg";
@@ -14,6 +14,10 @@ export default function AboutUsers() {
   const [currentUser, setCurrentUser] = useState([])
   const { userId } = useParams()
 
+  const usersStorage = localStorage.getItem("users");
+  const usersArray = JSON.parse(usersStorage);
+  console.log(usersArray);
+
   useEffect(() => {
     fetch(URL)
       .then(response => response.json())
@@ -22,6 +26,8 @@ export default function AboutUsers() {
         setCurrentUser(current_user)
       })
   }, [])
+
+  
 
   return (
     <div className={styles.user}>
