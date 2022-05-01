@@ -38,7 +38,7 @@ export default function Albums() {
                 {
                     currentAlbums.map((albums) => {
                         return (
-                        <div className={styles.albums_cont_card}>
+                        <div key={albums.id} className={styles.albums_cont_card}>
                             <img className={styles.albums_cont_card_img} src={newYork} alt="new-york" />
                             <h3 className={styles.albums_cont_card_title}>{albums.title}</h3>
                         </div>)

@@ -35,7 +35,7 @@ export default function Posts() {
                 {
                     currentPosts.map((posts)=>{
                         return(
-                            <div className={styles.posts_cont_cards}>
+                            <div key={posts.id} className={styles.posts_cont_cards}>
                             <h3 className={styles.posts_cont_cards_title}>{posts.title}</h3>
                             <p className={styles.posts_cont_cards_body}>{posts.body}</p>
                         </div>
