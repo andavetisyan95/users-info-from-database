@@ -5,8 +5,10 @@ import AboutUsers from "./components/AboutUsers"
 import Albums from './components/Albums';
 import NoFound from './components/NoFound';
 import Posts from './components/Posts';
+
 //styles
 import './App.css';
+
 
 
 
