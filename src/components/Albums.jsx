@@ -8,7 +8,6 @@ import styles from "../styles/Albums.module.scss"
 //images
 import newYork from "../images/newYork.jpg"
 
-const URL = "https://jsonplaceholder.typicode.com/albums"
 
 export default function Albums() {
 
@@ -17,6 +16,7 @@ export default function Albums() {
     
     const navigate = useNavigate()
 
+    //get request from localStorage
     const albumsStorage = localStorage.getItem("albums");
     const albumsArray = JSON.parse(albumsStorage);
 
