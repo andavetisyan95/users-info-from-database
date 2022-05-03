@@ -12,7 +12,7 @@ import Posts from './components/Posts';
 import './App.css';
 
 
-const HOST= "https://jsonplaceholder.typicode.com/users";
+const HOST = "https://jsonplaceholder.typicode.com/users";
 const URL = "https://jsonplaceholder.typicode.com/albums";
 const URL2 = "https://jsonplaceholder.typicode.com/posts";
 
@@ -21,14 +21,14 @@ function App() {
 
   useEffect(() => {
     fetch(HOST)
-        .then((response) => {
-            return response.json();
-        })
-        .then((users) => {
-            localStorage.setItem("users",JSON.stringify(users))
-        })
+      .then((response) => {
+        return response.json();
+      })
+      .then((users) => {
+        localStorage.setItem("users", JSON.stringify(users))
+      })
 
-}, [])
+  }, [])
 
   useEffect(() => {
     fetch(URL)
@@ -42,7 +42,7 @@ function App() {
     fetch(URL2)
       .then(response => response.json())
       .then(posts => {
-      localStorage.setItem("posts", JSON.stringify(posts))
+        localStorage.setItem("posts", JSON.stringify(posts))
       })
   }, [])
 
