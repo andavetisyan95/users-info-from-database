@@ -1,5 +1,5 @@
 //react hooks and helpers
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import {  useNavigate, useParams } from 'react-router';
 import { Link } from 'react-router-dom';
 
@@ -14,17 +14,13 @@ export default function Albums() {
 
     const { usId } = useParams()
 
-    const [currentAlbums, setCurrentAlbums] = useState([]);
+    
     const navigate = useNavigate()
 
-    useEffect(() => {
-        fetch(URL)
-          .then(response => response.json())
-          .then(results => {
-            const current_user = results.filter(({ userId }) => userId  === +usId)
-            setCurrentAlbums(current_user)
-          })
-      }, [])
+    const albumsStorage = localStorage.getItem("albums");
+    const albumsArray = JSON.parse(albumsStorage);
+
+    const current_user = albumsArray.filter(({ userId }) => userId  === +usId)
 
       function goback(){
           navigate(-1)
@@ -36,7 +32,7 @@ export default function Albums() {
             <div className={styles.header}>Albums</div>
             <div className={styles.albums_cont}>
                 {
-                    currentAlbums.map((albums) => {
+                    current_user.map((albums) => {
                         return (
                         <div key={albums.id} className={styles.albums_cont_card}>
                             <img className={styles.albums_cont_card_img} src={newYork} alt="new-york" />

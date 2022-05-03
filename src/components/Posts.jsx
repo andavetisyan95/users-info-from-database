@@ -1,25 +1,20 @@
 //react hooks and helpers
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useNavigate, useParams } from 'react-router';
 //styles
 import styles from "../styles/Posts.module.scss";
 
-const URL = "https://jsonplaceholder.typicode.com/posts"
 
 export default function Posts() {
     const { usId } = useParams();
 
-    const [currentPosts, setCurrentPosts] = useState([]);
     const navigate = useNavigate();
 
-    useEffect(() => {
-        fetch(URL)
-            .then(response => response.json())
-            .then(results => {
-                const current_user = results.filter(({ userId }) => userId === +usId)
-                setCurrentPosts(current_user)
-            })
-    }, [])
+    //get request from localStorage
+    const postsStorage = localStorage.getItem("posts");
+    const postsArray = JSON.parse(postsStorage);
+
+    const current_user = postsArray.filter(({ userId }) => userId === +usId)
 
    function goBack(){
         navigate(-1);
@@ -33,7 +28,7 @@ export default function Posts() {
             </div>
             <div className={styles.posts_cont}>
                 {
-                    currentPosts.map((posts)=>{
+                    current_user.map((posts)=>{
                         return(
                             <div key={posts.id} className={styles.posts_cont_cards}>
                             <h3 className={styles.posts_cont_cards_title}>{posts.title}</h3>
