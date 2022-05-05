@@ -18,8 +18,10 @@ const URL = "https://jsonplaceholder.typicode.com/albums";
 const URL2 = "https://jsonplaceholder.typicode.com/posts";
 
 function App() {
+  //useState
   const [darkMode, setDarkMode] = useState(false);
 
+  //useEffect
   useEffect(() => {
     fetch(HOST)
       .then((response) => {
