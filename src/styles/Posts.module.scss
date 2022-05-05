@@ -1,35 +1,34 @@
 @import "../scss/exports";
 
-main{
-    @include  mainStyle();
-    background-color: #3ca586;
-    .back_btn{
-        cursor: pointer;
-    }
+main {
+  @include mainStyle();
+  background-color: #35a961;
+  .back_btn {
+    cursor: pointer;
+  }
 }
 
-.header{
-    @include header();
-    letter-spacing: 4px;
+.header {
+  @include header();
+  letter-spacing: 4px;
 }
 
-.posts_cont{
-    @include grid();
-    margin: 20px auto;
-    &_cards{
-        @include flex();
-        background-color: red;
-        width: 280px;
-        height: 350px;
-        background-color: rgb(17, 17, 17);
-        padding: 7px;
-        &_title{
-            text-align: center;
-            color: #3ca586;
-        }
-        &_body{
-            color: white;
-            text-align: center;
-        }
+.posts_cont {
+  @include grid();
+  margin: 20px auto;
+  &_cards {
+    @include flex();
+    width: 280px;
+    height: 350px;
+    background-color: rgb(165, 243, 48);
+    padding: 7px;
+    &_title {
+      text-align: center;
+      color: #118931;
     }
+    &_body {
+      color: rgb(251, 21, 21);
+      text-align: center;
+    }
+  }
 }
