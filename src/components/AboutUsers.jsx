@@ -24,7 +24,6 @@ export default function AboutUsers() {
   const usersArray = JSON.parse(usersStorage);
 
   const current_user = usersArray.find(({ id }) => id === +usId);
-  console.log(current_user.id);
 
   const handleDark = (id) => {
     if (!darkMode.includes(+id)) {
@@ -37,13 +36,13 @@ export default function AboutUsers() {
   return (
     <div
       className={` ${styles.user} ${
-        darkMode.includes(current_user.id) ? styles.dark : styles.user
+        darkMode.includes(+usId) ? styles.dark : styles.user
       }`}
     >
       <div className={styles.user_switch_toggle}>
         <div
           className={` ${styles.user_switch_toggle_board} ${
-            darkMode.includes(current_user.id)
+            darkMode.includes(+usId)
               ? styles.green
               : styles.user_switch_toggle_board
           }`}
@@ -51,7 +50,7 @@ export default function AboutUsers() {
           <div
             onClick={() => handleDark(usId)}
             className={` ${styles.user_switch_toggle_board_ball} ${
-              darkMode.includes(current_user.id)
+              darkMode.includes(+usId)
                 ? styles.active
                 : styles.user_switch_toggle_board_ball
             }`}
@@ -60,21 +59,17 @@ export default function AboutUsers() {
       </div>
       <div
         className={`${styles.user_container} ${
-          darkMode.includes(current_user.id)
-            ? styles.outlined
-            : styles.user_container
+          darkMode.includes(+usId) ? styles.outlined : styles.user_container
         }`}
       >
         <img
-          src={`${darkMode.includes(current_user.id) ? nightPic : mountPic}`}
+          src={`${darkMode.includes(+usId) ? nightPic : mountPic}`}
           alt="mount"
           className={styles.user_container_walp}
         />
         <div className={styles.user_container_about_users}>
           <img
-            src={`${
-              darkMode.includes(current_user.id) ? darkUserPic : userPic
-            }`}
+            src={`${darkMode.includes(+usId) ? darkUserPic : userPic}`}
             alt="user"
             className={styles.user_container_about_users_img}
           />
