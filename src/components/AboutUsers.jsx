@@ -7,43 +7,74 @@ import { Link } from "react-router-dom";
 import DarkMoodContext from "../context/DarkMoodContext";
 
 //images
-import mount from "../images/mount.jpg";
+import mountPic from "../images/mount.jpg";
 import userPic from "../images/user.jpg";
+import nightPic from "../images/night.jpg";
+import darkUserPic from "../images/darkUser.jpg";
 //styles
 import styles from "../styles/AboutUsers.module.scss";
 
 export default function AboutUsers() {
   //react hooks consts
-  const { userId } = useParams();
+  const { usId } = useParams();
   const [darkMode, setDarkMode] = useContext(DarkMoodContext);
 
   //local storage
   const usersStorage = localStorage.getItem("users");
   const usersArray = JSON.parse(usersStorage);
 
-  const current_user = usersArray.find(({ id }) => id === +userId);
+  const current_user = usersArray.find(({ id }) => id === +usId);
+  console.log(current_user.id);
+
+  const handleDark = (id) => {
+    if (!darkMode.includes(+id)) {
+      setDarkMode(darkMode.concat(+id));
+    } else {
+      setDarkMode(darkMode.filter((el) => el !== +id));
+    }
+  };
 
   return (
-    <div className={` ${styles.user} ${darkMode ? styles.dark : styles.user}`}>
+    <div
+      className={` ${styles.user} ${
+        darkMode.includes(current_user.id) ? styles.dark : styles.user
+      }`}
+    >
       <div className={styles.user_switch_toggle}>
         <div
           className={` ${styles.user_switch_toggle_board} ${
-            darkMode ? styles.green : styles.user_switch_toggle_board
+            darkMode.includes(current_user.id)
+              ? styles.green
+              : styles.user_switch_toggle_board
           }`}
         >
           <div
-            onClick={() => setDarkMode(!darkMode)}
+            onClick={() => handleDark(usId)}
             className={` ${styles.user_switch_toggle_board_ball} ${
-              darkMode ? styles.active : styles.user_switch_toggle_board_ball
+              darkMode.includes(current_user.id)
+                ? styles.active
+                : styles.user_switch_toggle_board_ball
             }`}
           ></div>
         </div>
       </div>
-      <div className={styles.user_container}>
-        <img src={mount} alt="mount" className={styles.user_container_walp} />
+      <div
+        className={`${styles.user_container} ${
+          darkMode.includes(current_user.id)
+            ? styles.outlined
+            : styles.user_container
+        }`}
+      >
+        <img
+          src={`${darkMode.includes(current_user.id) ? nightPic : mountPic}`}
+          alt="mount"
+          className={styles.user_container_walp}
+        />
         <div className={styles.user_container_about_users}>
           <img
-            src={userPic}
+            src={`${
+              darkMode.includes(current_user.id) ? darkUserPic : userPic
+            }`}
             alt="user"
             className={styles.user_container_about_users_img}
           />
@@ -58,14 +89,13 @@ export default function AboutUsers() {
             Phone: <span>{current_user?.phone}</span>
           </p>
           <p>
-            {" "}
             Websit: <span>{current_user?.website}</span>
           </p>
           <div className={styles.user_container_btns}>
-            <Link to={`/albums/${userId}`}>
+            <Link to={`/albums/${usId}`}>
               <button className={styles.user_container_btns_1}>Albums</button>
             </Link>
-            <Link to={`/posts/${userId} `}>
+            <Link to={`/posts/${usId} `}>
               <button className={styles.user_container_btns_2}>Posts</button>
             </Link>
           </div>

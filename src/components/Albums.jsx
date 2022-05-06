@@ -12,7 +12,7 @@ import newYork from "../images/newYork.jpg";
 
 export default function Albums() {
   const { usId } = useParams();
-  const [darkMode] = useContext(DarkMoodContext);
+  const [darkMode, setDarkMode] = useContext(DarkMoodContext);
 
   const navigate = useNavigate();
 
@@ -27,9 +27,9 @@ export default function Albums() {
   }
 
   return (
-    <main className={`${darkMode ? styles.dark : null}`}>
+    <main className={`${darkMode.includes(+usId) ? styles.dark : null}`}>
       <img
-        className={`${darkMode ? styles.btn_color : null}`}
+        className={`${darkMode.includes(+usId) ? styles.btn_color : null}`}
         style={{ cursor: "pointer" }}
         onClick={goback}
         src="https://img.icons8.com/ios-filled/50/000000/left.png"

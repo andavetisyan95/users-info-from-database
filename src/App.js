@@ -19,7 +19,7 @@ const URL2 = "https://jsonplaceholder.typicode.com/posts";
 
 function App() {
   //useState
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState([]);
 
   //useEffect
   useEffect(() => {
@@ -53,7 +53,7 @@ function App() {
       <div className="App">
         <Routes>
           <Route path="/" element={<Users />} />
-          <Route path="/aboutUsers/:userId" element={<AboutUsers />} />
+          <Route path="/aboutUsers/:usId" element={<AboutUsers />} />
           <Route path="/albums/:usId" element={<Albums />} />
           <Route path="/posts/:usId" element={<Posts />} />
           <Route path="*" element={<NoFound />} />

@@ -23,11 +23,11 @@ export default function Posts() {
   }
 
   return (
-    <main className={`${darkMode ? styles.dark : null}`}>
+    <main className={`${darkMode.includes(+usId) ? styles.dark : null}`}>
       <img
         onClick={goBack}
         className={`${styles.back_btn} ${
-          darkMode ? styles.btn_color : styles.back_btn
+          darkMode.includes(+usId) ? styles.btn_color : styles.back_btn
         }`}
         src="https://img.icons8.com/ios-filled/50/000000/left.png"
       />
