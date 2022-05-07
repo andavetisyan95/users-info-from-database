@@ -17,7 +17,10 @@ import styles from "../styles/AboutUsers.module.scss";
 export default function AboutUsers() {
   //react hooks consts
   const { usId } = useParams();
-  const [darkMode, setDarkMode] = useContext(DarkMoodContext);
+  //react context import
+  const darkModeTheme = useContext(DarkMoodContext);
+  //context destructed
+  const { darkTheme, setDark } = darkModeTheme;
 
   //local storage
   const usersStorage = localStorage.getItem("users");
@@ -25,24 +28,24 @@ export default function AboutUsers() {
 
   const current_user = usersArray.find(({ id }) => id === +usId);
 
-  const handleDark = (id) => {
-    if (!darkMode.includes(+id)) {
-      setDarkMode(darkMode.concat(+id));
+  const handleDark = id => {
+    if (!darkTheme.includes(+id)) {
+      setDark(darkTheme.concat(+id));
     } else {
-      setDarkMode(darkMode.filter((el) => el !== +id));
+      setDark(darkTheme.filter(el => el !== +id));
     }
   };
 
   return (
     <div
       className={` ${styles.user} ${
-        darkMode.includes(+usId) ? styles.dark : styles.user
+        darkTheme.includes(+usId) ? styles.dark : styles.user
       }`}
     >
       <div className={styles.user_switch_toggle}>
         <div
           className={` ${styles.user_switch_toggle_board} ${
-            darkMode.includes(+usId)
+            darkTheme.includes(+usId)
               ? styles.green
               : styles.user_switch_toggle_board
           }`}
@@ -50,7 +53,7 @@ export default function AboutUsers() {
           <div
             onClick={() => handleDark(usId)}
             className={` ${styles.user_switch_toggle_board_ball} ${
-              darkMode.includes(+usId)
+              darkTheme.includes(+usId)
                 ? styles.active
                 : styles.user_switch_toggle_board_ball
             }`}
@@ -59,17 +62,17 @@ export default function AboutUsers() {
       </div>
       <div
         className={`${styles.user_container} ${
-          darkMode.includes(+usId) ? styles.outlined : styles.user_container
+          darkTheme.includes(+usId) ? styles.outlined : styles.user_container
         }`}
       >
         <img
-          src={`${darkMode.includes(+usId) ? nightPic : mountPic}`}
+          src={`${darkTheme.includes(+usId) ? nightPic : mountPic}`}
           alt="mount"
           className={styles.user_container_walp}
         />
         <div className={styles.user_container_about_users}>
           <img
-            src={`${darkMode.includes(+usId) ? darkUserPic : userPic}`}
+            src={`${darkTheme.includes(+usId) ? darkUserPic : userPic}`}
             alt="user"
             className={styles.user_container_about_users_img}
           />

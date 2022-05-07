@@ -24,32 +24,34 @@ function App() {
   //useEffect
   useEffect(() => {
     fetch(HOST)
-      .then((response) => {
+      .then(response => {
         return response.json();
       })
-      .then((users) => {
+      .then(users => {
         localStorage.setItem("users", JSON.stringify(users));
       });
   }, []);
 
   useEffect(() => {
     fetch(URL)
-      .then((response) => response.json())
-      .then((albums) => {
+      .then(response => response.json())
+      .then(albums => {
         localStorage.setItem("albums", JSON.stringify(albums));
       });
   }, []);
 
   useEffect(() => {
     fetch(URL2)
-      .then((response) => response.json())
-      .then((posts) => {
+      .then(response => response.json())
+      .then(posts => {
         localStorage.setItem("posts", JSON.stringify(posts));
       });
   }, []);
 
   return (
-    <DarkMoodContext.Provider value={[darkMode, setDarkMode]}>
+    <DarkMoodContext.Provider
+      value={{ darkTheme: darkMode, setDark: setDarkMode }}
+    >
       <div className="App">
         <Routes>
           <Route path="/" element={<Users />} />

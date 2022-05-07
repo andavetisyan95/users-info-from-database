@@ -8,7 +8,8 @@ import styles from "../styles/Posts.module.scss";
 
 export default function Posts() {
   const { usId } = useParams();
-  const [darkMode] = useContext(DarkMoodContext);
+  const darkThemeMode = useContext(DarkMoodContext);
+  const { darkTheme } = darkThemeMode;
 
   const navigate = useNavigate();
 
@@ -23,17 +24,17 @@ export default function Posts() {
   }
 
   return (
-    <main className={`${darkMode.includes(+usId) ? styles.dark : null}`}>
+    <main className={`${darkTheme.includes(+usId) ? styles.dark : null}`}>
       <img
         onClick={goBack}
         className={`${styles.back_btn} ${
-          darkMode.includes(+usId) ? styles.btn_color : styles.back_btn
+          darkTheme.includes(+usId) ? styles.btn_color : styles.back_btn
         }`}
         src="https://img.icons8.com/ios-filled/50/000000/left.png"
       />
       <div className={styles.header}>POSTS</div>
       <div className={styles.posts_cont}>
-        {current_user.map((posts) => {
+        {current_user.map(posts => {
           return (
             <div key={posts.id} className={styles.posts_cont_cards}>
               <h3 className={styles.posts_cont_cards_title}>{posts.title}</h3>
