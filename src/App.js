@@ -21,37 +21,55 @@ function App() {
   //useState
   const [darkMode, setDarkMode] = useState([]);
 
-  //useEffect
-  useEffect(() => {
-    fetch(HOST)
-      .then(response => {
-        return response.json();
-      })
-      .then(users => {
-        localStorage.setItem("users", JSON.stringify(users));
-      });
-  }, []);
+  // //useEffect
+  // useEffect(() => {
+  //   fetch(HOST)
+  //     .then(response => {
+  //       return response.json();
+  //     })
+  //     .then(users => {
+  //       localStorage.setItem("users", JSON.stringify(users));
+  //     });
+  // }, []);
 
-  useEffect(() => {
-    fetch(URL)
-      .then(response => response.json())
-      .then(albums => {
-        localStorage.setItem("albums", JSON.stringify(albums));
-      });
-  }, []);
+  // useEffect(() => {
+  //   fetch(URL)
+  //     .then(response => response.json())
+  //     .then(albums => {
+  //       localStorage.setItem("albums", JSON.stringify(albums));
+  //     });
+  // }, []);
 
-  useEffect(() => {
-    fetch(URL2)
-      .then(response => response.json())
-      .then(posts => {
-        localStorage.setItem("posts", JSON.stringify(posts));
-      });
-  }, []);
+  // useEffect(() => {
+  //   fetch(URL2)
+  //     .then(response => response.json())
+  //     .then(posts => {
+  //       localStorage.setItem("posts", JSON.stringify(posts));
+  //     });
+  // }, []);
+
+  async function fetchAllData() {
+    const [] = await Promise.all([
+      fetch(HOST)
+        .then(res => res.json())
+        .then(users => {
+          localStorage.setItem("users", JSON.stringify(users));
+        }),
+      fetch(URL)
+        .then(response => response.json())
+        .then(albums => {
+          localStorage.setItem("albums", JSON.stringify(albums));
+        }),
+      fetch(URL2)
+        .then(response => response.json())
+        .then(posts => {
+          localStorage.setItem("posts", JSON.stringify(posts));
+        })
+    ]);
+  }
 
   return (
-    <DarkMoodContext.Provider
-      value={{ darkTheme: darkMode, setDark: setDarkMode }}
-    >
+    <DarkMoodContext.Provider value={{ darkTheme: darkMode, setDark: setDarkMode }}>
       <div className="App">
         <Routes>
           <Route path="/" element={<Users />} />
