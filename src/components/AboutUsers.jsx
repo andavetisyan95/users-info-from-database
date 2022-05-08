@@ -13,8 +13,9 @@ import nightPic from "../images/night.jpg";
 import darkUserPic from "../images/darkUser.jpg";
 //styles
 import styles from "../styles/AboutUsers.module.scss";
+import withRequest from "../hoc/withRequest";
 
-export default function AboutUsers() {
+function AboutUsers({ data }) {
   //react hooks consts
   const { usId } = useParams();
   //react context import
@@ -22,11 +23,8 @@ export default function AboutUsers() {
   //context destructed
   const { darkTheme, setDark } = darkModeTheme;
 
-  //local storage
-  const usersStorage = localStorage.getItem("users");
-  const usersArray = JSON.parse(usersStorage);
-
-  const current_user = usersArray.find(({ id }) => id === +usId);
+  //received request from HOC
+  const current_user = data?.find(({ id }) => id === +usId);
 
   const handleDark = id => {
     if (!darkTheme.includes(+id)) {
@@ -37,48 +35,30 @@ export default function AboutUsers() {
   };
 
   return (
-    <div
-      className={` ${styles.user} ${
-        darkTheme.includes(+usId) ? styles.dark : styles.user
-      }`}
-    >
+    <div className={` ${styles.user} ${darkTheme.includes(+usId) ? styles.dark : styles.user}`}>
       <div className={styles.user_switch_toggle}>
         <div
           className={` ${styles.user_switch_toggle_board} ${
-            darkTheme.includes(+usId)
-              ? styles.green
-              : styles.user_switch_toggle_board
+            darkTheme.includes(+usId) ? styles.green : styles.user_switch_toggle_board
           }`}
         >
           <div
             onClick={() => handleDark(usId)}
             className={` ${styles.user_switch_toggle_board_ball} ${
-              darkTheme.includes(+usId)
-                ? styles.active
-                : styles.user_switch_toggle_board_ball
+              darkTheme.includes(+usId) ? styles.active : styles.user_switch_toggle_board_ball
             }`}
           ></div>
         </div>
       </div>
-      <div
-        className={`${styles.user_container} ${
-          darkTheme.includes(+usId) ? styles.outlined : styles.user_container
-        }`}
-      >
-        <img
-          src={`${darkTheme.includes(+usId) ? nightPic : mountPic}`}
-          alt="mount"
-          className={styles.user_container_walp}
-        />
+      <div className={`${styles.user_container} ${darkTheme.includes(+usId) ? styles.outlined : styles.user_container}`}>
+        <img src={`${darkTheme.includes(+usId) ? nightPic : mountPic}`} alt="mount" className={styles.user_container_walp} />
         <div className={styles.user_container_about_users}>
           <img
             src={`${darkTheme.includes(+usId) ? darkUserPic : userPic}`}
             alt="user"
             className={styles.user_container_about_users_img}
           />
-          <h3 style={{ color: "#949425", fontWeight: "800" }}>
-            {current_user?.name}
-          </h3>
+          <h3 style={{ color: "#949425", fontWeight: "800" }}>{current_user?.name}</h3>
           <h4 style={{ color: "#5b9e34" }}>{current_user?.username}</h4>
           <p>
             Email: <span> {current_user?.email} </span>
@@ -103,6 +83,8 @@ export default function AboutUsers() {
   );
 }
 
+export default withRequest(AboutUsers, "users");
+
 // const URL = "https://jsonplaceholder.typicode.com/users";
 // const [currentUser, setCurrentUser] = useState()
 
@@ -114,3 +96,7 @@ export default function AboutUsers() {
 //       setCurrentUser(current_user)
 //     })
 // }, [])
+
+//local storage
+// const usersStorage = localStorage.getItem("users");
+// const usersArray = JSON.parse(usersStorage);

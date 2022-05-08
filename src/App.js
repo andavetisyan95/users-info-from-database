@@ -13,60 +13,12 @@ import DarkMoodContext from "./context/DarkMoodContext";
 import "./App.css";
 
 //urls for request
-const HOST = "https://jsonplaceholder.typicode.com/users";
-const URL = "https://jsonplaceholder.typicode.com/albums";
+
 const URL2 = "https://jsonplaceholder.typicode.com/posts";
 
 function App() {
   //useState
   const [darkMode, setDarkMode] = useState([]);
-
-  // //useEffect
-  // useEffect(() => {
-  //   fetch(HOST)
-  //     .then(response => {
-  //       return response.json();
-  //     })
-  //     .then(users => {
-  //       localStorage.setItem("users", JSON.stringify(users));
-  //     });
-  // }, []);
-
-  // useEffect(() => {
-  //   fetch(URL)
-  //     .then(response => response.json())
-  //     .then(albums => {
-  //       localStorage.setItem("albums", JSON.stringify(albums));
-  //     });
-  // }, []);
-
-  // useEffect(() => {
-  //   fetch(URL2)
-  //     .then(response => response.json())
-  //     .then(posts => {
-  //       localStorage.setItem("posts", JSON.stringify(posts));
-  //     });
-  // }, []);
-
-  async function fetchAllData() {
-    const [] = await Promise.all([
-      fetch(HOST)
-        .then(res => res.json())
-        .then(users => {
-          localStorage.setItem("users", JSON.stringify(users));
-        }),
-      fetch(URL)
-        .then(response => response.json())
-        .then(albums => {
-          localStorage.setItem("albums", JSON.stringify(albums));
-        }),
-      fetch(URL2)
-        .then(response => response.json())
-        .then(posts => {
-          localStorage.setItem("posts", JSON.stringify(posts));
-        })
-    ]);
-  }
 
   return (
     <DarkMoodContext.Provider value={{ darkTheme: darkMode, setDark: setDarkMode }}>
