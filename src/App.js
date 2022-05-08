@@ -12,10 +12,6 @@ import DarkMoodContext from "./context/DarkMoodContext";
 //styles
 import "./App.css";
 
-//urls for request
-
-const URL2 = "https://jsonplaceholder.typicode.com/posts";
-
 function App() {
   //useState
   const [darkMode, setDarkMode] = useState([]);

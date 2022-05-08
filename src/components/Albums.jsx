@@ -9,19 +9,16 @@ import DarkMoodContext from "../context/DarkMoodContext";
 import styles from "../styles/Albums.module.scss";
 //images
 import newYork from "../images/newYork.jpg";
+import withRequest from "../hoc/withRequest";
 
-export default function Albums() {
+function Albums({ data }) {
   const { usId } = useParams();
   const darkThemeMode = useContext(DarkMoodContext);
   const { darkTheme } = darkThemeMode;
 
   const navigate = useNavigate();
 
-  //get request from localStorage
-  const albumsStorage = localStorage.getItem("albums");
-  const albumsArray = JSON.parse(albumsStorage);
-
-  const current_user = albumsArray.filter(({ userId }) => userId === +usId);
+  const current_user = data?.filter(({ userId }) => userId === +usId);
 
   function goback() {
     navigate(-1);
@@ -37,14 +34,10 @@ export default function Albums() {
       />
       <div className={styles.header}>Albums</div>
       <div className={styles.albums_cont}>
-        {current_user.map((albums) => {
+        {current_user?.map(albums => {
           return (
             <div key={albums.id} className={styles.albums_cont_card}>
-              <img
-                className={styles.albums_cont_card_img}
-                src={newYork}
-                alt="new-york"
-              />
+              <img className={styles.albums_cont_card_img} src={newYork} alt="new-york" />
               <h3 className={styles.albums_cont_card_title}>{albums.title}</h3>
             </div>
           );
@@ -53,3 +46,5 @@ export default function Albums() {
     </main>
   );
 }
+
+export default withRequest(Albums, "albums");
