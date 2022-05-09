@@ -8,9 +8,6 @@ import unknownImg from "../images/unknown2.jpg";
 //styles
 import styles from "../styles/Users.module.scss";
 
-// const usersStorage = localStorage.getItem("users");
-// const usersArray = JSON.parse(usersStorage);
-
 function Users({ data }) {
   return (
     <div className={styles.users_div}>
