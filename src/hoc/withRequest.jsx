@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import s from "../styles/Loading.module.scss";
+import styles from "../styles/Loading.module.scss";
 
 const withRequest = (OriginalComponent, url) => {
   function NewComponent() {
@@ -16,8 +16,8 @@ const withRequest = (OriginalComponent, url) => {
     return loading ? (
       <OriginalComponent data={data} setData={setData} />
     ) : (
-      <div className={s.spinner_container}>
-        <div className={s.spinner_container_loading}></div>
+      <div className={styles.spinner_container}>
+        <div className={styles.spinner_container_loading}></div>
       </div>
     );
   }
