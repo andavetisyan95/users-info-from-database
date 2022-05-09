@@ -1,15 +1,25 @@
 import { useEffect, useState } from "react";
+import s from "../styles/Loading.module.scss";
 
 const withRequest = (OriginalComponent, url) => {
   function NewComponent() {
     const [data, setData] = useState();
+    const [loading, setLoading] = useState(false);
     useEffect(() => {
       fetch(`https://jsonplaceholder.typicode.com/${url}`)
         .then(res => res.json())
         .then(result => setData(result));
+
+      setLoading(true);
     }, []);
 
-    return <OriginalComponent data={data} setData={setData} />;
+    return loading ? (
+      <OriginalComponent data={data} setData={setData} />
+    ) : (
+      <div className={s.spinner_container}>
+        <div className={s.spinner_container_loading}></div>
+      </div>
+    );
   }
   return NewComponent;
 };
