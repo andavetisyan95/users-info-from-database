@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useContext } from "react";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
@@ -27,12 +27,14 @@ function AboutUsers({ data }) {
   const current_user = data?.find(({ id }) => id === +usId);
 
   //consts for scss variables
-  const about_users = document.getElementById("about_users");
-  about_users?.style.setProperty("--background-color", darkTheme.includes(+usId) ? "rgb(0,0,0)" : "rgb(243, 241, 234)");
-  const board = document.getElementById("switch_toggle_board");
-  board?.style.setProperty("--back-color", darkTheme.includes(+usId) ? "rgb(19, 140, 53" : "silver");
-  const board_ball = document.getElementById("switch_toggle_ball");
-  board_ball?.style.setProperty("--left", darkTheme.includes(+usId) ? "40px" : "5px");
+  useEffect(() => {
+    const about_users = document.getElementById("about_users");
+    about_users?.style.setProperty("--background-color", darkTheme.includes(+usId) ? "rgb(0,0,0)" : "rgb(243, 241, 234)");
+    const board = document.getElementById("switch_toggle_board");
+    board?.style.setProperty("--back-color", darkTheme.includes(+usId) ? "rgb(19, 140, 53" : "silver");
+    const board_ball = document.getElementById("switch_toggle_ball");
+    board_ball?.style.setProperty("--left", darkTheme.includes(+usId) ? "40px" : "5px");
+  });
 
   const handleDark = id => {
     if (!darkTheme.includes(+id)) {
@@ -46,11 +48,7 @@ function AboutUsers({ data }) {
     <div id="about_users" className={styles.user}>
       <div className={styles.user_switch_toggle}>
         <div id="switch_toggle_board" className={styles.user_switch_toggle_board}>
-          <div
-            id="switch_toggle_ball"
-            onClick={() => handleDark(usId)}
-            className={styles.user_switch_toggle_board_ball}
-          ></div>
+          <div id="switch_toggle_ball" onClick={() => handleDark(usId)} className={styles.user_switch_toggle_board_ball}></div>
         </div>
       </div>
       <div className={darkTheme.includes(+usId) ? styles.outlined : styles.user_container}>
