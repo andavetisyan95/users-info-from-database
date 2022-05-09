@@ -1,9 +1,9 @@
 @import "../scss/exports";
 
-main {
+.posts_div {
   @include mainStyle();
   background-color: #35a961;
-  .back_btn {
+  &_back_btn {
     cursor: pointer;
   }
 }
@@ -36,9 +36,11 @@ main {
 //DarkMood ON style
 
 .dark {
+  @include mainStyle();
   background-color: black;
 }
 
 .btn_color {
+  cursor: pointer;
   background-color: rgb(224, 213, 47);
 }

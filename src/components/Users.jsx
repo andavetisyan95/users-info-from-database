@@ -14,7 +14,7 @@ function Users({ data }) {
       {data?.map(user => {
         return (
           <Link to={`/aboutUsers/${user.id}`} className={styles.users_div_card} key={user.id}>
-            <img className={styles.users_div_card_img} src={unknownImg}></img>
+            <img className={styles.users_div_card_img} alt="users" src={unknownImg}></img>
             <p className={styles.users_div_card_pTag}>{user.username}</p>
           </Link>
         );

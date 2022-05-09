@@ -1,6 +1,6 @@
 @import "../scss/exports";
 
-main {
+.main_div {
   @include mainStyle();
   background-color: rgb(224, 213, 47);
 }
@@ -45,6 +45,7 @@ main {
 
 .dark {
   background-color: black;
+  @include mainStyle();
 }
 
 .btn_color {

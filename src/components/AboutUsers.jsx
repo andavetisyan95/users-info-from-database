@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useContext } from "react";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
@@ -26,6 +26,11 @@ function AboutUsers({ data }) {
   //received request from HOC
   const current_user = data?.find(({ id }) => id === +usId);
 
+  useEffect(() => {
+    const root = document.documentElement;
+    root?.style.setProperty("--background-color", darkTheme.includes(+usId) ? "rgba(0,0,0,1)" : "rgba(243, 241, 234,1)");
+  });
+
   const handleDark = id => {
     if (!darkTheme.includes(+id)) {
       setDark(darkTheme.concat(+id));
@@ -35,26 +40,20 @@ function AboutUsers({ data }) {
   };
 
   return (
-    <div className={` ${styles.user} ${darkTheme.includes(+usId) ? styles.dark : styles.user}`}>
+    <div id="aboutUsers" className={darkTheme.includes(+usId) ? styles.dark : styles.user}>
       <div className={styles.user_switch_toggle}>
-        <div
-          className={` ${styles.user_switch_toggle_board} ${
-            darkTheme.includes(+usId) ? styles.green : styles.user_switch_toggle_board
-          }`}
-        >
+        <div className={darkTheme.includes(+usId) ? styles.green : styles.user_switch_toggle_board}>
           <div
             onClick={() => handleDark(usId)}
-            className={` ${styles.user_switch_toggle_board_ball} ${
-              darkTheme.includes(+usId) ? styles.active : styles.user_switch_toggle_board_ball
-            }`}
+            className={darkTheme.includes(+usId) ? styles.active : styles.user_switch_toggle_board_ball}
           ></div>
         </div>
       </div>
-      <div className={`${styles.user_container} ${darkTheme.includes(+usId) ? styles.outlined : styles.user_container}`}>
-        <img src={`${darkTheme.includes(+usId) ? nightPic : mountPic}`} alt="mount" className={styles.user_container_walp} />
+      <div className={darkTheme.includes(+usId) ? styles.outlined : styles.user_container}>
+        <img src={darkTheme.includes(+usId) ? nightPic : mountPic} alt="mount" className={styles.user_container_walp} />
         <div className={styles.user_container_about_users}>
           <img
-            src={`${darkTheme.includes(+usId) ? darkUserPic : userPic}`}
+            src={darkTheme.includes(+usId) ? darkUserPic : userPic}
             alt="user"
             className={styles.user_container_about_users_img}
           />

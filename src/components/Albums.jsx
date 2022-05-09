@@ -25,12 +25,13 @@ function Albums({ data }) {
   }
 
   return (
-    <main className={`${darkTheme.includes(+usId) ? styles.dark : null}`}>
+    <div className={darkTheme.includes(+usId) ? styles.dark : styles.main_div}>
       <img
-        className={`${darkTheme.includes(+usId) ? styles.btn_color : null}`}
+        className={darkTheme.includes(+usId) ? styles.btn_color : null}
         style={{ cursor: "pointer" }}
         onClick={goback}
         src="https://img.icons8.com/ios-filled/50/000000/left.png"
+        alt="back_btn"
       />
       <div className={styles.header}>Albums</div>
       <div className={styles.albums_cont}>
@@ -43,7 +44,7 @@ function Albums({ data }) {
           );
         })}
       </div>
-    </main>
+    </div>
   );
 }
 

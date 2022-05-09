@@ -21,11 +21,12 @@ function Posts({ data }) {
   }
 
   return (
-    <main className={`${darkTheme.includes(+usId) ? styles.dark : null}`}>
+    <div className={darkTheme.includes(+usId) ? styles.dark : styles.posts_div}>
       <img
         onClick={goBack}
-        className={`${styles.back_btn} ${darkTheme.includes(+usId) ? styles.btn_color : styles.back_btn}`}
+        className={darkTheme.includes(+usId) ? styles.btn_color : styles.posts_div_back_btn}
         src="https://img.icons8.com/ios-filled/50/000000/left.png"
+        alt="button"
       />
       <div className={styles.header}>POSTS</div>
       <div className={styles.posts_cont}>
@@ -38,7 +39,7 @@ function Posts({ data }) {
           );
         })}
       </div>
-    </main>
+    </div>
   );
 }
 

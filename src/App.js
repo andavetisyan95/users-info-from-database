@@ -1,6 +1,6 @@
 //react hooks
 import { Route, Routes } from "react-router";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 //components
 import Users from "./components/Users";
 import AboutUsers from "./components/AboutUsers";
