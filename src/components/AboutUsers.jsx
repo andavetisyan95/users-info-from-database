@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useContext } from "react";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
@@ -26,10 +26,13 @@ function AboutUsers({ data }) {
   //received request from HOC
   const current_user = data?.find(({ id }) => id === +usId);
 
-  useEffect(() => {
-    const root = document.documentElement;
-    root?.style.setProperty("--background-color", darkTheme.includes(+usId) ? "rgba(0,0,0,1)" : "rgba(243, 241, 234,1)");
-  });
+  //consts for scss variables
+  const about_users = document.getElementById("about_users");
+  about_users?.style.setProperty("--background-color", darkTheme.includes(+usId) ? "rgb(0,0,0)" : "rgb(243, 241, 234)");
+  const board = document.getElementById("switch_toggle_board");
+  board?.style.setProperty("--back-color", darkTheme.includes(+usId) ? "rgb(19, 140, 53" : "silver");
+  const board_ball = document.getElementById("switch_toggle_ball");
+  board_ball?.style.setProperty("--left", darkTheme.includes(+usId) ? "40px" : "5px");
 
   const handleDark = id => {
     if (!darkTheme.includes(+id)) {
@@ -40,12 +43,13 @@ function AboutUsers({ data }) {
   };
 
   return (
-    <div id="aboutUsers" className={darkTheme.includes(+usId) ? styles.dark : styles.user}>
+    <div id="about_users" className={styles.user}>
       <div className={styles.user_switch_toggle}>
-        <div className={darkTheme.includes(+usId) ? styles.green : styles.user_switch_toggle_board}>
+        <div id="switch_toggle_board" className={styles.user_switch_toggle_board}>
           <div
+            id="switch_toggle_ball"
             onClick={() => handleDark(usId)}
-            className={darkTheme.includes(+usId) ? styles.active : styles.user_switch_toggle_board_ball}
+            className={styles.user_switch_toggle_board_ball}
           ></div>
         </div>
       </div>

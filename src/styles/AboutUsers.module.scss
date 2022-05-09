@@ -5,20 +5,20 @@
   position: relative;
   height: 100vh;
   gap: 30px;
-  background-color: var(--background-color);
+  background-color: $backgroundColor;
   &_switch_toggle {
     @include flex();
     &_board {
       position: relative;
       width: 80px;
       height: 40px;
-      background-color: silver;
+      background-color: $switchToggleBoardColor;
       border-radius: 30px;
       cursor: pointer;
       padding: 3px;
       &_ball {
         position: absolute;
-        left: 5px;
+        left: $ballPosition;
         width: 40px;
         height: 40px;
         border-radius: 100%;
@@ -96,32 +96,32 @@
 }
 
 //DarkMood ON styles
-.active {
-  position: absolute;
-  width: 40px;
-  height: 40px;
-  border-radius: 100%;
-  background-color: white;
-  left: 40px;
-  transition: 0.3s ease;
-}
-.dark {
-  @include flex();
-  position: relative;
-  height: 100vh;
-  gap: 30px;
-  background-color: black;
-}
+// .active {
+//   position: absolute;
+//   width: 40px;
+//   height: 40px;
+//   border-radius: 100%;
+//   background-color: white;
+//   left: 40px;
+//   transition: 0.3s ease;
+// }
+// .dark {
+//   @include flex();
+//   position: relative;
+//   height: 100vh;
+//   gap: 30px;
+//   background-color: black;
+// }
 
-.green {
-  position: relative;
-  width: 80px;
-  height: 40px;
-  border-radius: 30px;
-  cursor: pointer;
-  padding: 3px;
-  background-color: rgb(19, 140, 53);
-}
+// .green {
+//   position: relative;
+//   width: 80px;
+//   height: 40px;
+//   border-radius: 30px;
+//   cursor: pointer;
+//   padding: 3px;
+//   background-color: rgb(19, 140, 53);
+// }
 
 .outlined {
   width: 400px;

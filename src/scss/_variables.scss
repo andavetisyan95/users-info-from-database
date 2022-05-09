@@ -1,4 +1,14 @@
-:root {
+:about_users {
   --background-color: rgb(243, 241, 234);
 }
 $backgroundColor: var(--background-color);
+
+:switch_toggle_board {
+  --back-color: silver;
+}
+$switchToggleBoardColor: var(--back-color);
+
+:switch_toggle_ball {
+  --left: 5px;
+}
+$ballPosition: var(--left);
