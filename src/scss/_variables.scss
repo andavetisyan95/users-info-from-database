@@ -1,12 +1,17 @@
+// :root {
+//   --background-color: rgb(243, 241, 234);
+// }
+// $backColorForRoot: var(--background-color);
+
 :about_users {
   --background-color: rgb(243, 241, 234);
 }
 $backgroundColor: var(--background-color);
 
 :switch_toggle_board {
-  --back-color: silver;
+  --background-color: silver;
 }
-$switchToggleBoardColor: var(--back-color);
+$switchToggleBoardColor: var(--background-color);
 
 :switch_toggle_ball {
   --left: 5px;

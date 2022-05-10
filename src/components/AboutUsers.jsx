@@ -31,9 +31,11 @@ function AboutUsers({ data }) {
     const about_users = document.getElementById("about_users");
     about_users.style.setProperty("--background-color", darkTheme.includes(+usId) ? "rgb(0,0,0)" : "rgb(243, 241, 234)");
     const board = document.getElementById("switch_toggle_board");
-    board.style.setProperty("--back-color", darkTheme.includes(+usId) ? "rgb(19, 140, 53" : "silver");
+    board.style.setProperty("--background-color", darkTheme.includes(+usId) ? "rgb(19, 140, 53" : "silver");
     const board_ball = document.getElementById("switch_toggle_ball");
     board_ball.style.setProperty("--left", darkTheme.includes(+usId) ? "40px" : "5px");
+    // const root = document.documentElement;
+    // root.style.setProperty("--background-color", darkTheme.includes(+usId) ? "black" : "rgb(243, 241, 234)");
   });
 
   const handleDark = id => {
