@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useLayoutEffect } from "react";
 import { useContext } from "react";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
@@ -27,13 +27,13 @@ function AboutUsers({ data }) {
   const current_user = data?.find(({ id }) => id === +usId);
 
   //consts for scss variables
-  useEffect(() => {
+  useLayoutEffect(() => {
     const about_users = document.getElementById("about_users");
-    about_users?.style.setProperty("--background-color", darkTheme.includes(+usId) ? "rgb(0,0,0)" : "rgb(243, 241, 234)");
+    about_users.style.setProperty("--background-color", darkTheme.includes(+usId) ? "rgb(0,0,0)" : "rgb(243, 241, 234)");
     const board = document.getElementById("switch_toggle_board");
-    board?.style.setProperty("--back-color", darkTheme.includes(+usId) ? "rgb(19, 140, 53" : "silver");
+    board.style.setProperty("--back-color", darkTheme.includes(+usId) ? "rgb(19, 140, 53" : "silver");
     const board_ball = document.getElementById("switch_toggle_ball");
-    board_ball?.style.setProperty("--left", darkTheme.includes(+usId) ? "40px" : "5px");
+    board_ball.style.setProperty("--left", darkTheme.includes(+usId) ? "40px" : "5px");
   });
 
   const handleDark = id => {
