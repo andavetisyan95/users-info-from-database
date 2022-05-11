@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect } from "react";
+import React, { useLayoutEffect } from "react";
 import { useContext } from "react";
 import { useParams } from "react-router";
 import { Link } from "react-router-dom";
